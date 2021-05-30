@@ -1,4 +1,8 @@
 # account credentials
+# you receive these informations once you create a Twitter APP (must have for download)
+# more information: https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api
+# follow my code though, official code has bugs
+
 
 bearer_token <- "AAAAAAAAAAAAAAAAAAAAANGsQAEAAAAAVqIajpHCsttpQXrLSUhzgoGBMxg%3D1rES3hXHKCfFy6HhGcZGGMiE3b8MFbkyVD00Q3XuKOj0B84DJQ"
 headers <- c(`Authorization` = sprintf('Bearer %s', bearer_token))

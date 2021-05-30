@@ -13,21 +13,22 @@ source("twitter_credentials.R")
 
 # define data ranges -----
 
-data_range <- tibble(datetime = seq(as.POSIXct("2021-05-30 17:59:01"), 
-                                    as.POSIXct("2021-05-30 18:00:01"), 
+data_range <- tibble(datetime = seq(as.POSIXct("2021-05-30 17:59:01"), # beggining
+                                    as.POSIXct("2021-05-30 18:00:01"), # end
                                     # as.POSIXct("2021-05-23 18:00:01"), 
                                     # as.POSIXct("2021-05-30 17:59:01")
-                                    by = "1 min") %>% 
+                                    by = "1 min") %>% # interval
                        as.character(),
-                     tw_datetime = "")
+                     tw_datetime = "") 
 
-data_range <- data_range %>% mutate(tw_datetime = datetime %>% 
+data_range <- data_range %>% mutate(tw_datetime = datetime %>% # create twitter specific datetime information
                                       str_replace(" ", "T") %>% 
                                       str_replace(":01$", ":01.000Z"))
 
 # create download function
 
 twitter_download <- function(x) {
+  # sleep until executing agian
   Sys.sleep(5) # FIXME: to 60 secs
   
   params = list(
@@ -55,14 +56,18 @@ twitter_download <- function(x) {
            data.created_at, data.conversation_id, data.public_metrics.retweet_count,
            data.public_metrics.reply_count, data.public_metrics.like_count, data.public_metrics.quote_count, 
            meta.newest_id, meta.oldest_id, meta.result_count, meta.next_token) %>% 
+    # transform into better data format (faster data wrangling, important for higher data sizes)
     as_tibble()
   
   
 }
 
 # execute download function 
+# intuition: map through all the rows in "data_range" (which contain the timedates)
+# and execute the function above for all of them 
 
 full_exp <- map(1:nrow(data_range), ~twitter_download(.x)) %>% 
+  # reduce complexity of the results from individual tibbles into one big tibble
   reduce(bind_rows)
 
 
