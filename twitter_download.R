@@ -11,15 +11,6 @@ library(jsonlite)
 
 Sys.setenv(BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANGsQAEAAAAAVqIajpHCsttpQXrLSUhzgoGBMxg%3D1rES3hXHKCfFy6HhGcZGGMiE3b8MFbkyVD00Q3XuKOj0B84DJQ")
 
-bearer_token <- "AAAAAAAAAAAAAAAAAAAAANGsQAEAAAAAVqIajpHCsttpQXrLSUhzgoGBMxg%3D1rES3hXHKCfFy6HhGcZGGMiE3b8MFbkyVD00Q3XuKOj0B84DJQ"
-headers <- c(`Authorization` = sprintf('Bearer %s', bearer_token))
-
-api_key <- "Onr9QZ6CGZnE2CzGzzbCxyh61"
-api_secret <- "FGOeYy9zgWdrFF1jRMGfcg28xtbljxY9M6VilpWum8B2aE1Way"
-
-acc_token <- "1394959278528733190-J3JiyE7ZxRvrtzRO1tLLdoLgwUmlvn"
-acc_secret <- "Pv9D5EXIUyxZQf5g03XIY5AwuFgT4cDM439x2nJxFJaw0"
-
 
 # define data ranges -----
 
@@ -41,7 +32,7 @@ twitter_download <- function(x) {
   Sys.sleep(5) # FIXME: to 60 secs
   
   params = list(
-    `query` = '(vaccine OR BioNTech OR AstraZeneca OR Pfizer) -is.retweet lang:en',
+    `query` = '(vaccine OR BioNTech OR AstraZeneca OR Pfizer) -is.retweet lang:en', # TODO: search terms
     `max_results` = '30', # every 60 secs, 30 downloads 
     `tweet.fields` = 'created_at,lang,conversation_id,public_metrics', # metrics, such as retweets, likes etc.
     `start_time` = as.character(data_range[x,2]) # dynamic range depending on map
