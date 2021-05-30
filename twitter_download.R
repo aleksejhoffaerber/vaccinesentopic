@@ -1,11 +1,10 @@
 # libraries
 
-library(httr)
-library(purrr)
-library(dplyr)
-library(stringr)
-library(tsibble)
-library(jsonlite)
+library(httr) # parsing API information
+library(purrr) # parallelization of loops
+library(dplyr) # data wrangling & piping
+library(stringr) # text operations
+library(jsonlite) # JSON to data format transformation
 
 # set-up environment and twitter credentials ------
 
