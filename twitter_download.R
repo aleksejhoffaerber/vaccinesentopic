@@ -7,10 +7,10 @@ library(stringr)
 library(tsibble)
 library(jsonlite)
 
-# set-up and twitter credentials ------
+# set-up environment and twitter credentials ------
 
 Sys.setenv(BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANGsQAEAAAAAVqIajpHCsttpQXrLSUhzgoGBMxg%3D1rES3hXHKCfFy6HhGcZGGMiE3b8MFbkyVD00Q3XuKOj0B84DJQ")
-
+source("twitter_credentials.R")
 
 # define data ranges -----
 
