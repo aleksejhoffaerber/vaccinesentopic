@@ -1,4 +1,4 @@
-# libraries
+# libraries ----
 
 library(httr) # parsing API information
 library(purrr) # parallelization of loops
@@ -62,7 +62,8 @@ twitter_download <- function(x) {
   
 }
 
-# execute download function 
+# execute download function -----
+
 # intuition: map through all the rows in "data_range" (which contain the timedates)
 # and execute the function above for all of them 
 
