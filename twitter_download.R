@@ -8,7 +8,7 @@ library(jsonlite) # JSON to data format transformation
 
 # set-up environment and twitter credentials ------
 
-Sys.setenv(BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANGsQAEAAAAAVqIajpHCsttpQXrLSUhzgoGBMxg%3D1rES3hXHKCfFy6HhGcZGGMiE3b8MFbkyVD00Q3XuKOj0B84DJQ")
+Sys.setenv(BEARER_TOKEN = bearer_token)
 source("twitter_credentials.R")
 
 # define data ranges -----
